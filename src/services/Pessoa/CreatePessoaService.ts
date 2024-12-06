@@ -1,3 +1,4 @@
+import { log } from 'console'
 import db from '../../database/index'
 import {Pessoa} from '../../interfaces/index'
 
@@ -6,7 +7,7 @@ export class CreatePessoaService {
         try {
             const validateEmail = await db('pessoas').where('email', data.email).select('*')
 
-            if(validateEmail){
+            if(validateEmail.length > 0){
                 throw new Error('Este email já está cadastrado!')
             }
 

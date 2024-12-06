@@ -1,4 +1,3 @@
-import cors from "cors"
 import { Router, json } from "express"
 import { 
     createPessoa,
@@ -10,13 +9,8 @@ import {
 
 export default () => {
     const router = Router()
-    router.use(
-        cors({
-            origin: ["*"],
-            methods: ["GET", "POST", "PUT", "DELETE"],
-            credentials: true,
-        }),
-    )
+    router.use(json())
+
     router.get("/pessoas", getPessoas)
     router.get("/pessoa/:id", showPessoa)
     router.post("/pessoa", createPessoa)
