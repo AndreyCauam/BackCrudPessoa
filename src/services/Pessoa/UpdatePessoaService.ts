@@ -6,8 +6,8 @@ export class UpdatePessoaService {
         try {
 
             const pessoa = await db.transaction(async (trx) => {
-                const [createdPessoa] = await trx("pessoas").where('id', id).update(data).returning("*");
-                return createdPessoa; 
+                const createdPessoa = await trx("pessoas").where('id', id).update(data);
+                return createdPessoa;
             });
 
             return pessoa

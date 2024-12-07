@@ -12,7 +12,7 @@ export class CreatePessoaService {
             }
 
             const pessoa = await db.transaction(async (trx) => {
-                const [createdPessoa] = await trx("pessoas").insert(data).returning("*");
+                const [createdPessoa] = await trx("pessoas").insert(data);
                 return createdPessoa; 
             });
 
