@@ -21,6 +21,7 @@ export class GetPessoasService {
                     .orWhere("email", "like", `%${query.search}%`);
                   }
         })
+        .orderBy('id','desc')
         .limit(limit)
         .offset(offset);
 
